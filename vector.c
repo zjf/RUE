@@ -137,17 +137,17 @@ inline Vector *ElemWiseAddVector(Vector *v, Vector *u){
     khiter_t k;
     for(k = kh_begin(u->data); k != kh_end(u->data); k++){
         if(kh_exist(u->data, k)){
-            AddValue(v2, kh_key(u->data, k), kh_value(u->data, k))
+            AddValue(v2, kh_key(u->data, k), kh_value(u->data, k));
         }
     }
     return v2;
 }
 
 inline Vector *ElemWiseMultiply(Vector *v, Vector *u){
-    Vector *v2;
+    Vector *v2 = NewVector();
     khiter_t k;
     int ret;
-    double ual;
+    double val, ual;
     for(k = kh_begin(v->data); k != kh_end(v->data); k++){
         if(kh_exist(v->data, k)){
             val = kh_value(v->data, k);
