@@ -110,5 +110,52 @@ inline double Dot(Vector *v, Vector *v2){
 
 // inline double DotFeatures(Vector *v, )
 
-typedef double (*ElemOperation)(double val);
+inline Vector *ApplyOnElem(Vector *v, ElemOperation f){
+    Vector *v2 = NewVector();
+    khiter_t k;
+    for(k = kh_begin(v->data); k != kh_end(v->data); k++){
+        if(kh_exist(v->data, k)){
+            SetValue(v2, kh_key(v->data, k), f(kh_value(v->data, k)));
+        }
+    }
+    return v2;
+}
 
+inline Vector *Scale(Vector *v, double scale){
+    Vector *v2 = NewVector();
+    khiter_t k;
+    for(k = kh_begin(v->data); k != kh_end(v->data); k++){
+        if(kh_exist(v->data, k)){
+            SetValue(v2, kh_key(v->data, k), kh_value(v->data, k) * scale);
+        }
+    }
+    return v2;
+}
+
+inline Vector *ElemWiseAddVector(Vector *v, Vector *u){
+    Vector *v2 = Copy(v);
+    khiter_t k;
+    for(k = kh_begin(u->data); k != kh_end(u->data); k++){
+        if(kh_exist(u->data, k)){
+            AddValue(v2, kh_key(u->data, k), kh_value(u->data, k))
+        }
+    }
+    return v2;
+}
+
+inline Vector *ElemWiseMultiply(Vector *v, Vector *u){
+    Vector *v2;
+    khiter_t k;
+    int ret;
+    double ual;
+    for(k = kh_begin(v->data); k != kh_end(v->data); k++){
+        if(kh_exist(v->data, k)){
+            val = kh_value(v->data, k);
+            ual = GetValue(u, kh_key(v->data, k), &ret);
+            if(val != 0 && ual != 0){
+                SetValue(v2, kh_key(v->data, k), val*ual);
+            }
+        }
+    }
+    return v2;
+}

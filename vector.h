@@ -24,3 +24,9 @@ inline void AddVector(Vector *v, Vector *v2, double alpha);
 inline double NormL2(Vector *v);
 inline Vector *Copy(Vector *v);
 inline double Dot(Vector *v, Vector *v2);
+
+typedef double (*ElemOperation)(double val);
+inline Vector *ApplyOnElem(Vector *v, ElemOperation f);
+inline Vector *Scale(Vector *v, double scale);
+inline Vector *ElemWiseAddVector(Vector *v, Vector *u);
+inline Vector *ElemWiseMultiply(Vector *v, Vector *u);
