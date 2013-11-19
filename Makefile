@@ -10,6 +10,9 @@ main.o: main.c main.h
 vector.o: vector.c vector.h khash.h
 	$(CC) $(CFLAGS) -c vector.c
 
+matrix.o: matrix.c matrix.h khash.h
+	$(CC) $(CFLAGS) -c matrix.c
+
 clean:
 	rm -f *.o
 	rm rue

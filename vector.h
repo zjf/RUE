@@ -1,3 +1,6 @@
+#ifndef __RUE_VECTOR_H
+#define __RUE_VECTOR_H
+
 #include <stdio.h>
 #include <math.h>
 #include <inttypes.h>
@@ -30,3 +33,5 @@ inline Vector *ApplyOnElem(Vector *v, ElemOperation f);
 inline Vector *Scale(Vector *v, double scale);
 inline Vector *ElemWiseAddVector(Vector *v, Vector *u);
 inline Vector *ElemWiseMultiply(Vector *v, Vector *u);
+
+#endif /* __RUE_VECTOR_H */
