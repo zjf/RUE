@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS = -Wall -lm -g
 
-rue: main.o vector.o
-	$(CC) $(CFLAGS) -o rue main.o vector.o
+rue: main.o vector.o matrix.o
+	$(CC) $(CFLAGS) -o rue main.o vector.o matrix.o
 
 main.o: main.c main.h
 	$(CC) $(CFLAGS) -c main.c
