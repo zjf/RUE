@@ -27,6 +27,8 @@ typedef Sample strcut{
     Feature *Features;
     int Label;
     double Prediction;
+    int FeatureNumber;
+    int FeatureCapacity;
 }Sample;
 
 inline Sample *NewSample(){
@@ -34,6 +36,8 @@ inline Sample *NewSample(){
     ret->Features = NULL;
     ret->Lable = 0;
     ret->Prediction = 0.0;
+    ret->FeatureNumber = 0;
+    ret->FeatureCapacity = 0;
     return ret;
 }
 
@@ -43,7 +47,7 @@ inline void DestroySample(Sample *s){
 }
 
 inline double LableDoubleValue(Sample *s){
-    if(s->Lable > 0){
+    if(s->Label > 0){
         return 1.0;
     }else{
         return 0.0;
@@ -51,5 +55,14 @@ inline double LableDoubleValue(Sample *s){
 }
 
 inline void AddFeature(Sample *s, Feature f){
-    ;
+    if(s->FeatureNumber == 0){
+        s->FeatureCapacity = 1;
+        s->Features = malloc(sizeof(Feature));
+    }else if(s->FeatureNumber == s->FeatureCapacity){
+        s->FeatureCapacity = s->FeatureCapacity * 2;
+        s->Features = realloc(s->FeatureCapacity * sizeof(Feature));
+    }
+    s->Features[FeatureNumber].Id = f.Id;
+    s->Features[FeatureNumber].Value = f.Value;
+    s->FeatureNumber++;
 }

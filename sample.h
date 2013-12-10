@@ -9,7 +9,7 @@
 
 KHASH_MAP_INIT_STR(String, char *);
 
-#define StringMap khash_t(StringMap)
+#define StringMap khash_t(String)
 #define make_StringMap() kh_init(String)
 
 typedef struct RawSample{
