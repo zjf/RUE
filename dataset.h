@@ -17,6 +17,8 @@ typedef double FeatureSplit[];
 typedef struct{
     RawSample **Samples;
     StringBoolMap FeatureKeys;
+    int SampleNumber;
+    int SampleCapacity;
 }RawDataSet;
 
 #endif /* __RUE_DATASET_H */
